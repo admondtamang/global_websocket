@@ -9,7 +9,7 @@ const server = http.createServer(app);
 const io = new Server(server);
 
 // Route for emitting events
-app.post("/emit", (req, res) => {
+app.post("/api/emit", (req, res) => {
   const { key, payload } = req.body || {};
 
   if (!key || !payload) {
@@ -20,7 +20,7 @@ app.post("/emit", (req, res) => {
 });
 
 // Health check route
-app.get("/healthcheck", (req, res) => {
+app.get("/api/healthcheck", (req, res) => {
   res.status(200).send("Server is running");
 });
 
