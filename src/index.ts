@@ -24,6 +24,11 @@ app.get("/api/healthcheck", (req, res) => {
   res.status(200).send("Server is running");
 });
 
+// Health check route
+app.get("/", (req, res) => {
+  res.status(200).send("Server is running");
+});
+
 // Socket.IO connection
 io.on("connection", (socket) => {
   console.log("Client connected");
