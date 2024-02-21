@@ -4,8 +4,10 @@
   "description": "A socket api",
   "main": "index.js",
   "scripts": {
-    "build": "tsc && tsc-alias",
-    "start": "node ./dist/index.js",
+    "build": "rimraf dist && tsc",
+    "start": "nodemon src/index.ts",
+    "add-build": "git add dist",
+    "ts.check": "tsc --project tsconfig.json",
     "dev": "ts-node-dev -r tsconfig-paths/register ./src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -22,5 +24,14 @@
     "tsc-alias": "^1.8.8",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.3.3"
-  }
+  },
+  "devDependencies": {
+    "pre-commit": "^1.2.2",
+    "rimraf": "^5.0.5"
+  },
+  "pre-commit": [
+    "ts.check",
+    "build",
+    "add-build"
+  ]
 }
